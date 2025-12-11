@@ -156,36 +156,28 @@ const HomeHeader = () => {
             <div className="mobile-menu-nav">
               <Link 
                 className="mobile-menu-item" 
-                href="https://www.screentimejourney.com/pages/about-me" 
-                target="_self" 
-                rel="noopener noreferrer"
+                href="/about-me"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 About Me
               </Link>
               <Link 
                 className="mobile-menu-item" 
-                href="https://www.screentimejourney.com/products/screentimejourney" 
-                target="_self" 
-                rel="noopener noreferrer"
+                href="/start-now"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Start Now
               </Link>
               <Link 
                 className="mobile-menu-item" 
-                href="https://www.screentimejourney.com/pages/milestones" 
-                target="_self" 
-                rel="noopener noreferrer"
+                href="/milestones"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Milestones
               </Link>
               <Link 
                 className="mobile-menu-item" 
-                href="https://www.screentimejourney.com/pages/leaderboard" 
-                target="_self" 
-                rel="noopener noreferrer"
+                href="/leaderboard"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Leaderboard
@@ -194,9 +186,7 @@ const HomeHeader = () => {
             <div className="mobile-menu-actions">
               <Link 
                 className="btn-primary" 
-                href="https://www.screentimejourney.com" 
-                target="_self" 
-                rel="noopener noreferrer"
+                href="/start-now"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
@@ -206,7 +196,7 @@ const HomeHeader = () => {
         </div>
 
         {/* Logo (Grid Column 2 - CENTERED) */}
-        <Link className="header-logo" href="https://www.screentimejourney.com" target="_self" rel="noopener noreferrer">
+        <Link className="header-logo" href="/"
           {/* Dark logo */}
           <img
             src="https://cdn.shopify.com/s/files/1/0866/6749/3623/files/stj_favi_png.png?v=1757864303"
@@ -227,33 +217,25 @@ const HomeHeader = () => {
           {/* Desktop Navigation Links */}
           <nav className="header-nav">
             <Link 
-              href="https://www.screentimejourney.com/pages/about-me" 
-              target="_self" 
-              rel="noopener noreferrer"
+              href="/about-me"
               className={isTransparent && isHomePage ? 'text-white' : 'text-[#0F172A]'}
             >
               About Me
             </Link>
             <Link 
-              href="https://www.screentimejourney.com/products/screentimejourney" 
-              target="_self" 
-              rel="noopener noreferrer"
+              href="/start-now"
               className={isTransparent && isHomePage ? 'text-white' : 'text-[#0F172A]'}
             >
               Start Now
             </Link>
             <Link 
-              href="https://www.screentimejourney.com/pages/milestones" 
-              target="_self" 
-              rel="noopener noreferrer"
+              href="/milestones"
               className={isTransparent && isHomePage ? 'text-white' : 'text-[#0F172A]'}
             >
               Milestones
             </Link>
             <Link 
-              href="https://www.screentimejourney.com/pages/leaderboard" 
-              target="_self" 
-              rel="noopener noreferrer"
+              href="/leaderboard"
               className={isTransparent && isHomePage ? 'text-white' : 'text-[#0F172A]'}
             >
               Leaderboard
@@ -265,9 +247,7 @@ const HomeHeader = () => {
             <div className="header-buttons-desktop">
               <Link 
                 className={`btn-outline-primary ${isTransparent && isHomePage ? 'btn-inverted-primary' : ''}`}
-                href="https://www.screentimejourney.com" 
-                target="_self" 
-                rel="noopener noreferrer"
+                href="/start-now"
               >
                 Home
               </Link>

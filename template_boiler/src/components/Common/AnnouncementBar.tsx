@@ -276,9 +276,8 @@ const AnnouncementBar: React.FC<AnnouncementBarProps> = ({
                               >
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
-                                  fill="none"
-                                  viewBox="0 0 12 9"
                                   fill="currentColor"
+                                  viewBox="0 0 12 9"
                                   className="w-full h-full text-white"
                                 >
                                   <path

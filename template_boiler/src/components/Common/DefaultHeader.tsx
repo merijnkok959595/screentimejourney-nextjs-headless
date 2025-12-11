@@ -30,7 +30,7 @@ const DefaultHeader: React.FC = () => {
     <header className="default-header header">
       <div className="header-inner">
         {/* Logo */}
-        <Link className="header-logo" href="https://www.screentimejourney.com" target="_self" rel="noopener noreferrer">
+        <Link className="header-logo" href="/">
           <img 
             src="https://cdn.shopify.com/s/files/1/0866/6749/3623/files/stj_trimmed_png.png?v=1757864303" 
             alt="Screen Time Journey Logo"
@@ -39,16 +39,16 @@ const DefaultHeader: React.FC = () => {
         
         {/* Navigation Links */}
         <nav className="header-nav">
-          <a href="https://www.screentimejourney.com/pages/about-me" target="_self" rel="noopener noreferrer">About Me</a>
-          <a href="https://www.screentimejourney.com/products/screentimejourney" target="_self" rel="noopener noreferrer">Start Now</a>
-          <a href="https://www.screentimejourney.com/pages/milestones" target="_self" rel="noopener noreferrer">Milestones</a>
-          <a href="https://www.screentimejourney.com/pages/leaderboard" target="_self" rel="noopener noreferrer">Leaderboard</a>
+          <Link href="/about-me">About Me</Link>
+          <Link href="/start-now">Start Now</Link>
+          <Link href="/milestones">Milestones</Link>
+          <Link href="/leaderboard">Leaderboard</Link>
         </nav>
         
         {/* Action Buttons */}
         <div className="header-actions">
           <div className="header-buttons-desktop">
-            <a className="btn-outline-primary" href="https://www.screentimejourney.com" target="_self" rel="noopener noreferrer">Home</a>
+            <Link className="btn-outline-primary" href="/">Home</Link>
           </div>
         </div>
       </div>
