@@ -41,6 +41,14 @@ const ScrollingBanner: React.FC<ScrollingBannerProps> = ({
     const list = listRef.current;
     const banner = bannerRef.current;
     
+    // Clean up any existing animation before creating new one
+    if (banner.id && banner.id.startsWith('scrolling-banner-')) {
+      const existingStyle = document.querySelector(`style[data-banner-id="${banner.id}"]`);
+      if (existingStyle) {
+        document.head.removeChild(existingStyle);
+      }
+    }
+    
     // Always duplicate items for seamless infinite scroll
     const originalItems = Array.from(list.children);
     const duplicateCount = 4; // Always create 4 copies for smooth infinite loop
@@ -68,14 +76,15 @@ const ScrollingBanner: React.FC<ScrollingBannerProps> = ({
     // Calculate the width of one complete set of items
     const singleSetWidth = list.scrollWidth / duplicateCount;
     
-    // Create dynamic CSS animation
-    const sectionId = `scrolling-banner-${Date.now()}`;
+    // Create dynamic CSS animation with stable ID
+    const sectionId = `scrolling-banner-${Math.random().toString(36).substr(2, 9)}`;
     banner.id = sectionId;
     
     const animationDirection = direction === "right" ? "reverse" : "normal";
     const translateDistance = direction === "right" ? singleSetWidth : -singleSetWidth;
     
     const style = document.createElement('style');
+    style.setAttribute('data-banner-id', sectionId);
     style.textContent = `
       #${sectionId} ul {
         animation-name: scrolling-banner-animation-${sectionId};
@@ -83,6 +92,7 @@ const ScrollingBanner: React.FC<ScrollingBannerProps> = ({
         animation-direction: ${animationDirection};
         animation-iteration-count: infinite;
         animation-timing-function: linear;
+        animation-play-state: running;
       }
       
       @keyframes scrolling-banner-animation-${sectionId} {
@@ -102,7 +112,7 @@ const ScrollingBanner: React.FC<ScrollingBannerProps> = ({
         document.head.removeChild(style);
       }
     };
-  }, [items, animationDuration, direction]);
+  }, [items, animationDuration, direction, gap]);
 
   return (
     <div

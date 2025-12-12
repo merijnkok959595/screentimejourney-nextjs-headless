@@ -52,7 +52,7 @@ const AboutMePage = () => {
         subtitle="Take Action Today"
         description="Don't let another day pass trapped in endless scrolling and digital overwhelm. Join thousands who have transformed their lives with Screen Time Journey."
         primaryButtonText="Start Now"
-        primaryButtonLink="https://www.screentimejourney.com/products/screentimejourney"
+        primaryButtonLink="/product/screentimejourney"
         imageUrl="https://cdn.shopify.com/s/files/1/0866/6749/3623/files/stj_favi_purple_v2.png?v=1757864301"
         imageAlt="Take Action Today"
         layout="image_first"

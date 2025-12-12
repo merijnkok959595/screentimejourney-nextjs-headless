@@ -16,7 +16,7 @@ const Hero: React.FC<HeroProps> = ({
   title = "Quit Porn, Stop Doomscrolling",
   subtitle,
   ctaText = "Start now",
-  ctaLink = "/products/screentimejourney",
+  ctaLink = "/product/screentimejourney",
   imageUrl = "https://cdn.shopify.com/s/files/1/0866/6749/3623/files/Untitled-20250823-050134-2733-4x-2.webp?v=1762880326",
   imageMobileUrl,
   overlayOpacity = 0.3,

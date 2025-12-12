@@ -31,6 +31,11 @@ export default function RootLayout({
     setTimeout(() => setLoading(false), 1000);
   }, []);
 
+  // Scroll to top on route change
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+
   return (
     <html lang="en" suppressHydrationWarning={true}>
       <body>

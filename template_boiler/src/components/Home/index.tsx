@@ -51,7 +51,7 @@ const Home = () => {
         primaryButtonText="Read my story"
         primaryButtonLink="/about-me"
         secondaryButtonText="Start now"
-        secondaryButtonLink="https://www.screentimejourney.com/products/screentimejourney"
+        secondaryButtonLink="/product/screentimejourney"
       />
       <Separator />
       

@@ -102,14 +102,12 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
                       
                       {/* Secondary Button */}
                       {secondaryButtonText && secondaryButtonLink && (
-                        <a 
+                        <Link 
                           href={secondaryButtonLink}
                           className="button button--secondary default"
-                          target="_blank"
-                          rel="noopener noreferrer"
                         >
                           <span>{secondaryButtonText}</span>
-                        </a>
+                        </Link>
                       )}
                       
                       {/* Legacy single button support */}
