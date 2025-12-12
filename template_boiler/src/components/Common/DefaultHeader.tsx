@@ -5,25 +5,29 @@ import Link from 'next/link';
 const DefaultHeader: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
 
-  // Handle scroll effect for header shrinking
+  // Shrink header on scroll (Screen Time Journey method)
   useEffect(() => {
     const handleScroll = () => {
       const header = document.querySelector('.default-header');
+      const announcementBar = document.querySelector('.announcement-bar');
       
-      if (header) {
+      if (header && announcementBar) {
         if (window.scrollY > 50) {
           header.classList.add('scrolled');
+          announcementBar.classList.add('scrolled');
           setIsScrolled(true);
         } else {
           header.classList.remove('scrolled');
+          announcementBar.classList.remove('scrolled');
           setIsScrolled(false);
         }
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, []);
 
   return (
@@ -40,7 +44,7 @@ const DefaultHeader: React.FC = () => {
         {/* Navigation Links */}
         <nav className="header-nav">
           <Link href="/about-me">About Me</Link>
-          <Link href="/start-now">Start Now</Link>
+          <Link href="/product/screentimejourney">Start Now</Link>
           <Link href="/milestones">Milestones</Link>
           <Link href="/leaderboard">Leaderboard</Link>
         </nav>

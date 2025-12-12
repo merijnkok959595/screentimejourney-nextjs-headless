@@ -170,3 +170,7 @@ All components accept props for:
 ---
 
 **Ready for Shopify headless integration!** 🛍️ Your modular component architecture makes API integration straightforward and scalable.
+
+
+
+

@@ -57,7 +57,7 @@ const HomeHeader = () => {
               logo.classList.remove('logo-animate-shrink', 'logo-animate-grow');
               
               // Force reflow to restart animation
-              void logo.offsetWidth;
+              void (logo as HTMLElement).offsetWidth;
               
               if (scrollTop > lastScrollTop && scrollTop >= 80) {
                 // Scrolling DOWN past 80px: Logo shrinks (big → normal)
@@ -161,9 +161,9 @@ const HomeHeader = () => {
               >
                 About Me
               </Link>
-              <Link 
-                className="mobile-menu-item" 
-                href="/start-now"
+              <Link
+                className="mobile-menu-item"
+                href="/product/screentimejourney"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Start Now
@@ -184,9 +184,9 @@ const HomeHeader = () => {
               </Link>
             </div>
             <div className="mobile-menu-actions">
-              <Link 
-                className="btn-primary" 
-                href="/start-now"
+              <Link
+                className="btn-primary"
+                href="/product/screentimejourney"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Home
@@ -196,7 +196,7 @@ const HomeHeader = () => {
         </div>
 
         {/* Logo (Grid Column 2 - CENTERED) */}
-        <Link className="header-logo" href="/"
+        <Link className="header-logo" href="/">
           {/* Dark logo */}
           <img
             src="https://cdn.shopify.com/s/files/1/0866/6749/3623/files/stj_favi_png.png?v=1757864303"
@@ -222,8 +222,8 @@ const HomeHeader = () => {
             >
               About Me
             </Link>
-            <Link 
-              href="/start-now"
+            <Link
+              href="/product/screentimejourney"
               className={isTransparent && isHomePage ? 'text-white' : 'text-[#0F172A]'}
             >
               Start Now
@@ -245,9 +245,9 @@ const HomeHeader = () => {
           {/* Desktop actions */}
           <div className="header-actions">
             <div className="header-buttons-desktop">
-              <Link 
+              <Link
                 className={`btn-outline-primary ${isTransparent && isHomePage ? 'btn-inverted-primary' : ''}`}
-                href="/start-now"
+                href="/product/screentimejourney"
               >
                 Home
               </Link>

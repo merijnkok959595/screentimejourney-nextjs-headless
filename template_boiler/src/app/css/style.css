@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+@import url('https://fonts.googleapis.com/css2?family=Material+Icons+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 
 @tailwind base;
 @tailwind components;
@@ -7,10 +10,16 @@
 @layer base {
   html {
     @apply scroll-smooth;
+    background-color: #f9f9f9 !important;
   }
 
   body {
     @apply font-euclid-circular-a font-normal text-base text-dark-3 relative z-1;
+    background-color: #f9f9f9 !important;
+  }
+
+  main {
+    background-color: #f9f9f9 !important;
   }
 }
 
@@ -31,6 +40,88 @@
   .no-scrollbar {
     -ms-overflow-style: none; /* IE and Edge */
     scrollbar-width: none; /* Firefox */
+  }
+
+  /* Shimmer animation cleaned up - no longer used */
+
+  /* Product page button pulse animation - matching screen-time-journey-workspace */
+  .product-pulse-button {
+    animation: pulse-heartbeat 6.5s ease-in-out infinite !important;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .product-pulse-button::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    animation: shimmer 6s ease-in-out infinite;
+    animation-delay: 1s;
+    pointer-events: none;
+  }
+
+  @keyframes pulse-heartbeat {
+    0% { transform: scale(1); }
+    7.5% { transform: scale(1.05); }
+    15% { transform: scale(1); }
+    15.1%, 100% { transform: scale(1); }
+  }
+
+  @keyframes shimmer {
+    0% { left: -100%; }
+    100% { left: 100%; }
+  }
+
+  @keyframes slideUpFixed {
+    from {
+      transform: translateX(-50%) translateY(100px);
+      opacity: 0;
+    }
+    to {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+  }
+
+  /* Sticky Cart Button Effects - Using DBTFY Theme Pattern */
+  .sticky-cart-button {
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    isolation: isolate;
+  }
+
+  .sticky-cart-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #f0f0f0;
+    border-radius: 6px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.5s ease, transform-origin 0s;
+    z-index: -1;
+  }
+
+  .sticky-cart-button:hover::before {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+
+  .sticky-cart-button:not(:hover)::before {
+    transform: scaleX(0);
+    transform-origin: right;
+  }
+
+  .sticky-cart-button:hover {
+    color: var(--brand-primary);
   }
 }
 
@@ -391,7 +482,7 @@ input[type='search']::-webkit-search-results-decoration {
 }
 
 .header.scrolled .header-logo img {
-  max-height: 80px;
+  max-height: 60px;
 }
 
 /* Transparent header: logo stays same */
@@ -647,7 +738,7 @@ header[class*="bg-transparent"] .header-nav a {
   border: none;
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -679,7 +770,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -705,7 +796,7 @@ header[class*="bg-transparent"] .header-nav a {
   border: 1px solid var(--brand-primary);
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -730,7 +821,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -1002,7 +1093,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: rgba(46, 4, 86, 0.15);
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -1698,7 +1789,6 @@ header[class*="bg-transparent"] .header-nav a {
 .stj-milestone-container {
   max-width: 1100px;
   margin: 0 auto;
-  margin-top: 40px;
   font-family: var(--font-body);
   background: var(--page-bg);
   width: 100%;
@@ -1759,7 +1849,7 @@ header[class*="bg-transparent"] .header-nav a {
 .stj-milestone-card {
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 24px;
   margin-bottom: var(--spacing-lg);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -1809,7 +1899,7 @@ header[class*="bg-transparent"] .header-nav a {
   padding-bottom: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stj-milestone-image img {
@@ -1819,7 +1909,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stj-milestone-description {
@@ -1844,6 +1934,61 @@ header[class*="bg-transparent"] .header-nav a {
 
 .stj-start-now-container {
   text-align: center;
+}
+
+/* Start Now Button Styling */
+.stj-start-now-container .button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 30px;
+  height: 47px;
+  border-radius: 6px;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  text-decoration: none;
+  border: 2px solid var(--brand-primary);
+  transition: all 0.3s ease;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.stj-start-now-container .button--primary {
+  background: var(--brand-primary);
+  color: #FFFFFF !important;
+  border: none;
+}
+
+.stj-start-now-container .button--primary span {
+  color: #FFFFFF !important;
+}
+
+.stj-start-now-container .button--primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #4a1375;
+  border-radius: 6px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.5s ease, transform-origin 0s;
+  z-index: -1;
+}
+
+.stj-start-now-container .button--primary:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.stj-start-now-container .button--primary:not(:hover)::before {
+  transform: scaleX(0);
+  transform-origin: right;
 }
 
 /* Alignment Rails System */
@@ -1886,7 +2031,7 @@ header[class*="bg-transparent"] .header-nav a {
   justify-content: center;
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -1920,7 +2065,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -1964,7 +2109,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -1994,7 +2139,6 @@ header[class*="bg-transparent"] .header-nav a {
 .stj-leaderboard-container {
   max-width: 1200px;
   margin: 0 auto;
-  margin-top: 40px;
   padding: var(--spacing-xl);
   font-family: var(--font-body);
   background-color: var(--page-bg);
@@ -2020,7 +2164,7 @@ header[class*="bg-transparent"] .header-nav a {
   justify-content: center;
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -2054,7 +2198,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -2098,7 +2242,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -2131,7 +2275,7 @@ header[class*="bg-transparent"] .header-nav a {
 .stj-top-card {
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 24px;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -2212,7 +2356,7 @@ header[class*="bg-transparent"] .header-nav a {
   padding-bottom: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 0;
 }
 
@@ -2223,7 +2367,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 /* Users Table Styling */
@@ -2236,7 +2380,7 @@ header[class*="bg-transparent"] .header-nav a {
   overflow-x: auto;
   margin-top: 2rem;
   background: #FFFFFF;
-  border-radius: 12px;
+  border-radius: 6px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
 }
 
@@ -2616,7 +2760,7 @@ header[class*="bg-transparent"] .header-nav a {
   justify-content: center;
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -2648,7 +2792,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -2683,7 +2827,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -2814,20 +2958,21 @@ header[class*="bg-transparent"] .header-nav a {
    ============================================================================ */
 
 .default-header {
-  background-color: #f9f9f9;
+  background: #f9f9f9;
   position: sticky;
-  top: 0;
-  z-index: 99;
-  transition: all 0.3s ease;
-  border-bottom: 1px solid #EEEEEE;
-  min-height: 80px;
-  height: 80px;
+  top: 42px;
+  z-index: 50;
+  border-bottom: 1px solid #e5e5e5;
+  padding: 0;
+  transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1), min-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 95px;
+  min-height: 95px;
 }
 
 .default-header.scrolled {
-  min-height: 80px;
+  padding: 0;
   height: 80px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  min-height: 80px;
 }
 
 .default-header .header-inner {
@@ -2837,35 +2982,47 @@ header[class*="bg-transparent"] .header-nav a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 80px;
-  height: 80px;
+  height: 100%;
 }
 
 .default-header .header-logo {
   flex: 0 0 auto;
   display: flex;
   align-items: center;
+  width: 95px;
+  height: 95px;
   justify-content: center;
-  width: 80px;
-  height: 80px;
-  padding: 6px;
+  padding: 7.5px;
+  transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .default-header .header-logo img {
   height: 100%;
   max-height: 80px;
   width: auto;
+  transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   display: block;
 }
 
+/* Desktop scrolled state - logo container and image both shrink */
+.default-header.scrolled .header-logo {
+  width: 80px;
+  height: 80px;
+  padding: 7.5px;
+}
+
+.default-header.scrolled .header-logo img {
+  max-height: 65px;
+}
+
 .default-header .header-nav {
+  flex: 1 1 auto;
   display: flex;
   gap: 20px;
   align-items: center;
-  position: absolute;
-  left: 180px;
-  top: 50%;
-  transform: translateY(-50%);
+  justify-content: flex-start;
+  padding-left: 48px;
+  position: relative;
 }
 
 .default-header .header-nav a {
@@ -2903,9 +3060,39 @@ header[class*="bg-transparent"] .header-nav a {
   .default-header .header-nav {
     display: none;
   }
-  
+
   .default-header .header-buttons-desktop {
     display: none;
+  }
+}
+
+/* Mobile responsive sizing for DefaultHeader logo - Screen Time Journey Method */
+@media (max-width: 768px) {
+  .default-header .header-logo {
+    justify-self: center;
+    order: 2;
+    width: 85px;
+    height: 85px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 7.5px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1), height 0.5s cubic-bezier(0.4, 0, 0.2, 1), padding 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .default-header .header-logo img {
+    max-height: 70px;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .default-header.scrolled .header-logo img {
+    max-height: 52.5px;
+  }
+
+  .default-header.scrolled .header-logo {
+    width: 70px;
+    height: 70px;
+    padding: 5px;
   }
 }
 
@@ -2974,7 +3161,7 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .footer-contact-link {
-  color: rgba(255,255,255,0.95);
+  color: #FFFFFF !important;
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.95rem;
@@ -2985,7 +3172,7 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .footer-contact-link:hover {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   text-decoration: underline;
   transform: translateX(2px);
 }
@@ -3018,7 +3205,7 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .footer-link {
-  color: rgba(255,255,255,0.9);
+  color: #FFFFFF !important;
   text-decoration: none;
   font-family: var(--font-body);
   font-size: 0.9rem;
@@ -3030,7 +3217,7 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .footer-link:hover {
-  color: #FFFFFF;
+  color: #FFFFFF !important;
   text-decoration: underline;
   transform: translateX(4px);
 }
@@ -3051,10 +3238,14 @@ header[class*="bg-transparent"] .header-nav a {
   align-items: center;
   flex-wrap: wrap;
   gap: 1rem;
-  color: rgba(255,255,255,0.8);
+  color: #FFFFFF !important;
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 500;
+}
+
+.footer-policies span {
+  color: #FFFFFF !important;
 }
 
 .footer-policy-links {
@@ -3064,8 +3255,8 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .footer-policy-link {
-  color: rgba(255,255,255,0.75);
-  text-decoration: none;
+  color: #FFFFFF !important;
+  text-decoration: underline;
   font-family: var(--font-body);
   font-size: 0.85rem;
   font-weight: 500;
@@ -3073,8 +3264,9 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .footer-policy-link:hover {
-  color: rgba(255,255,255,0.95);
+  color: #FFFFFF !important;
   text-decoration: underline;
+  opacity: 0.8;
 }
 
 /* Mobile responsive for footer */
@@ -3179,7 +3371,7 @@ header[class*="bg-transparent"] .header-nav a {
 .stj-milestone-preview-card {
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 28px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
@@ -3239,7 +3431,7 @@ header[class*="bg-transparent"] .header-nav a {
   padding-bottom: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stj-milestone-image img {
@@ -3249,7 +3441,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stj-milestone-actions {
@@ -3264,7 +3456,7 @@ header[class*="bg-transparent"] .header-nav a {
   justify-content: center;
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -3296,7 +3488,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -3347,7 +3539,7 @@ header[class*="bg-transparent"] .header-nav a {
 .stj-preview-top-card {
   background: #FFFFFF;
   border: 1px solid #E5E5E5;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 24px;
   text-align: center;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
@@ -3429,7 +3621,7 @@ header[class*="bg-transparent"] .header-nav a {
   padding-bottom: 100%;
   position: relative;
   overflow: hidden;
-  border-radius: 8px;
+  border-radius: 6px;
   margin-bottom: 0;
 }
 
@@ -3440,7 +3632,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 8px;
+  border-radius: 6px;
 }
 
 .stj-preview-actions {
@@ -3455,7 +3647,7 @@ header[class*="bg-transparent"] .header-nav a {
   justify-content: center;
   padding: 0 30px;
   height: 47px;
-  border-radius: 7px;
+  border-radius: 6px;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   font-weight: 500;
   font-size: 15px;
@@ -3487,7 +3679,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   height: 100%;
   background: #4a1375;
-  border-radius: 7px;
+  border-radius: 6px;
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.5s ease, transform-origin 0s;
@@ -3635,7 +3827,7 @@ header[class*="bg-transparent"] .header-nav a {
 .start-now-content-section,
 .contact-info-content-section {
   padding: 60px 0;
-  background: #ffffff;
+  background: #f9f9f9;
 }
 
 .policy-content,
@@ -3738,7 +3930,7 @@ header[class*="bg-transparent"] .header-nav a {
 .about-content-block {
   background: #f9fafb;
   padding: 2rem;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid #e5e7eb;
 }
 
@@ -3768,7 +3960,7 @@ header[class*="bg-transparent"] .header-nav a {
   text-align: center;
   padding: 2rem;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 2px solid transparent;
   transition: all 0.3s ease;
 }
@@ -3803,7 +3995,7 @@ header[class*="bg-transparent"] .header-nav a {
   margin: 4rem 0;
   padding: 3rem;
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-  border-radius: 16px;
+  border-radius: 6px;
 }
 
 .large-btn {
@@ -3830,7 +4022,7 @@ header[class*="bg-transparent"] .header-nav a {
   padding: 1.5rem;
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 6px;
   transition: all 0.3s ease;
 }
 
@@ -3864,7 +4056,7 @@ header[class*="bg-transparent"] .header-nav a {
 .faq-item {
   background: #f8fafc;
   border: 1px solid #e2e8f0;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 1.5rem;
   margin-bottom: 1rem;
   transition: all 0.3s ease;
@@ -3891,7 +4083,7 @@ header[class*="bg-transparent"] .header-nav a {
   margin-top: 3rem;
   padding: 2rem;
   background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 /* Contact Page Styles */
@@ -3910,7 +4102,7 @@ header[class*="bg-transparent"] .header-nav a {
   margin-bottom: 2rem;
   padding: 1.5rem;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: 6px;
   border-left: 4px solid var(--brand-primary);
 }
 
@@ -3933,14 +4125,14 @@ header[class*="bg-transparent"] .header-nav a {
   margin-top: 2rem;
   padding: 1.5rem;
   background: #ecfdf5;
-  border-radius: 12px;
+  border-radius: 6px;
   border-left: 4px solid #10b981;
 }
 
 .contact-form {
   background: #ffffff;
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: 6px;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
   border: 1px solid #e5e7eb;
 }
@@ -3973,7 +4165,7 @@ header[class*="bg-transparent"] .header-nav a {
   width: 100%;
   padding: 0.75rem;
   border: 2px solid #e5e7eb;
-  border-radius: 8px;
+  border-radius: 6px;
   font-size: 1rem;
   transition: border-color 0.3s ease;
   font-family: inherit;
@@ -4004,7 +4196,7 @@ header[class*="bg-transparent"] .header-nav a {
   text-align: center;
   padding: 1.5rem;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid #e2e8f0;
 }
 
@@ -4026,7 +4218,7 @@ header[class*="bg-transparent"] .header-nav a {
 .job-listing {
   background: #ffffff;
   border: 1px solid #e5e7eb;
-  border-radius: 12px;
+  border-radius: 6px;
   padding: 2rem;
   margin-bottom: 1.5rem;
   transition: all 0.3s ease;
@@ -4058,7 +4250,7 @@ header[class*="bg-transparent"] .header-nav a {
 .job-type {
   background: #f3f4f6;
   padding: 0.25rem 0.75rem;
-  border-radius: 20px;
+  border-radius: 6px;
   font-size: 0.875rem;
   color: #374151;
 }
@@ -4072,7 +4264,7 @@ header[class*="bg-transparent"] .header-nav a {
   text-align: center;
   padding: 2rem;
   background: #f8fafc;
-  border-radius: 12px;
+  border-radius: 6px;
   border: 1px solid #e2e8f0;
 }
 
@@ -4081,7 +4273,7 @@ header[class*="bg-transparent"] .header-nav a {
   margin: 3rem 0;
   padding: 2rem;
   background: linear-gradient(135deg, #ecfdf5, #d1fae5);
-  border-radius: 12px;
+  border-radius: 6px;
 }
 
 .benefits {
@@ -4118,7 +4310,7 @@ header[class*="bg-transparent"] .header-nav a {
 .response-item {
   background: #f0f9ff;
   padding: 1rem;
-  border-radius: 8px;
+  border-radius: 6px;
   text-align: center;
 }
 
@@ -4133,13 +4325,184 @@ header[class*="bg-transparent"] .header-nav a {
   color: var(--brand-primary);
 }
 
+/* Material Icons */
+.material-icon {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Material Icons Outlined */
+.material-icons-outlined {
+  font-family: 'Material Icons Outlined';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Product Page Styles */
+.product-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .product-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+  
+  .product-video-container {
+    width: 100% !important;
+    height: 400px !important;
+  }
+}
+
+/* Button Animations */
+@keyframes pulse-glow {
+  0%, 95% {
+    box-shadow: 0 4px 12px rgba(74, 19, 117, 0.3);
+    transform: scale(1);
+  }
+  98% {
+    box-shadow: 0 8px 24px rgba(74, 19, 117, 0.5);
+    transform: scale(1.02);
+  }
+  100% {
+    box-shadow: 0 4px 12px rgba(74, 19, 117, 0.3);
+    transform: scale(1);
+  }
+}
+
+@keyframes sheer-effect {
+  0%, 95% {
+    left: -100%;
+  }
+  96%, 100% {
+    left: 100%;
+  }
+}
+
+.stj-start-now-button:hover {
+  background-color: #5b1f8a !important;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(74, 19, 117, 0.4) !important;
+}
+
+/* Media Card Component - Premium SaaS Style */
+.media-card {
+  display: inline-block;
+  border-radius: 6px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.18),
+    0 8px 16px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+}
+
+.media-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 32px 64px rgba(0, 0, 0, 0.22),
+    0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.media-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: none;
+  outline: none;
+}
+
+/* Media Card Variants */
+.media-card--large {
+  border-radius: 6px;
+  box-shadow: 
+    0 25px 50px rgba(0, 0, 0, 0.20),
+    0 10px 20px rgba(0, 0, 0, 0.14);
+}
+
+.media-card--large:hover {
+  transform: translateY(-3px);
+  box-shadow: 
+    0 40px 80px rgba(0, 0, 0, 0.24),
+    0 15px 30px rgba(0, 0, 0, 0.16);
+}
+
+.media-card--subtle {
+  box-shadow: 
+    0 10px 25px rgba(0, 0, 0, 0.12),
+    0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.media-card--subtle:hover {
+  transform: translateY(-1px);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.16),
+    0 8px 16px rgba(0, 0, 0, 0.10);
+}
+
+/* Dark theme support */
+@media (prefers-color-scheme: dark) {
+  .media-card {
+    background: #1f2937;
+    box-shadow: 
+      0 20px 40px rgba(0, 0, 0, 0.25),
+      0 8px 16px rgba(0, 0, 0, 0.15);
+  }
+  
+  .media-card:hover {
+    box-shadow: 
+      0 32px 64px rgba(0, 0, 0, 0.30),
+      0 12px 24px rgba(0, 0, 0, 0.20);
+  }
+}
+
+/* Blog Styles */
+.blog-post-card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.blog-post-link:hover {
+  color: #2e0456 !important;
+}
+
+.read-more-link:hover {
+  opacity: 0.8;
+}
+
 /* Cookie Preferences Page */
 .cookie-category {
   background: #f8fafc;
   padding: 1.5rem;
   margin: 1.5rem 0;
-  border-radius: 12px;
-  border-left: 4px solid var(--brand-primary);
+  border-radius: 6px;
+  border-left: 4px solid #e5e7eb;
 }
 
 .cookie-control {
@@ -4168,24 +4531,24 @@ header[class*="bg-transparent"] .header-nav a {
 }
 
 .third-party-service {
-  background: #fffbeb;
+  background: #f8fafc;
   padding: 1rem;
   margin: 1rem 0;
-  border-radius: 8px;
-  border-left: 3px solid #f59e0b;
+  border-radius: 6px;
+  border-left: 3px solid #e5e7eb;
 }
 
 .retention-info {
   background: #f0f9ff;
   padding: 1.5rem;
-  border-radius: 12px;
+  border-radius: 6px;
   margin: 1rem 0;
 }
 
 .cookie-actions {
   background: linear-gradient(135deg, #f8fafc, #e2e8f0);
   padding: 2rem;
-  border-radius: 16px;
+  border-radius: 6px;
   text-align: center;
   margin-top: 3rem;
 }

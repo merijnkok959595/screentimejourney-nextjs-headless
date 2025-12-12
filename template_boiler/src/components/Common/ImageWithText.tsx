@@ -53,7 +53,13 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
                   loading="lazy"
                   style={{
                     aspectRatio: "1/1",
-                    objectFit: "cover"
+                    objectFit: "cover",
+                    objectPosition: "center",
+                    boxShadow: "0 8px 24px rgba(15, 23, 42, 0.12)",
+                    borderRadius: "8px",
+                    width: "100%",
+                    height: "100%",
+                    display: "block"
                   }}
                 />
               </div>
@@ -61,7 +67,8 @@ const ImageWithText: React.FC<ImageWithTextProps> = ({
             
             {/* Text Content Section */}
             <div className="image-with-text__text-item grid__item">
-              <div className={`image-with-text__content image-with-text__content--${contentPosition} image-with-text__content--adapt content-container`}>
+              <div className={`image-with-text__content image-with-text__content--${contentPosition} image-with-text__content--adapt content-container`}
+                   style={{ transform: 'translateY(-40px)' }}>
                 <div className="image-with-text__text rte">
                   {title && (
                     <p className="image-with-text__title text-sm font-medium text-gray-600 uppercase tracking-wider mb-2">

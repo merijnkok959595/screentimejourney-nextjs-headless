@@ -11,7 +11,7 @@ export const menuData: Menu[] = [
     id: 2,
     title: "Start Now",
     newTab: false,
-    path: "/start-now",
+    path: "/product/screentimejourney",
   },
   {
     id: 3,

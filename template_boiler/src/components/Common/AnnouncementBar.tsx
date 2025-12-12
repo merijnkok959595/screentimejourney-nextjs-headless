@@ -16,12 +16,12 @@ interface AnnouncementBarProps {
 
 const AnnouncementBar: React.FC<AnnouncementBarProps> = ({
   announcements = [
-    { text: "🧠 Reset your dopamine", link: "/products/screentimejourney" },
-    { text: "🚀 Start your journey today", link: "/products/screentimejourney" },
-    { text: "🛌 Wake up & sleep Phone-free", link: "/products/screentimejourney" },
-    { text: "⚡ Break free from porn", link: "/products/screentimejourney" },
-    { text: "⏳ Take your time back", link: "/products/screentimejourney" },
-    { text: "☠️ Stop doomscrolling", link: "/products/screentimejourney" },
+    { text: "🧠 Reset your dopamine", link: "/product/screentimejourney" },
+    { text: "🚀 Start your journey today", link: "/product/screentimejourney" },
+    { text: "🛌 Wake up & sleep Phone-free", link: "/product/screentimejourney" },
+    { text: "⚡ Break free from porn", link: "/product/screentimejourney" },
+    { text: "⏳ Take your time back", link: "/product/screentimejourney" },
+    { text: "☠️ Stop doomscrolling", link: "/product/screentimejourney" },
   ],
   enableAutoplay = true,
   autoplaySpeed = 5,

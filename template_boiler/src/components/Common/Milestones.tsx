@@ -183,10 +183,21 @@ const Milestones: React.FC<MilestonesProps> = ({
         {/* Start Now Button */}
         <div className="stj-start-now-section">
           <div className="stj-start-now-container">
-            <Link href="https://www.screentimejourney.com/products/screentimejourney" className="button button--primary default">
+            <Link href="/product/screentimejourney" className="button button--primary default">
               <span className="grid align-items-center">Start now</span>
             </Link>
           </div>
+        </div>
+        
+        {/* Separator */}
+        <div style={{ padding: '20px 0 10px 0' }}>
+          <div style={{ 
+            height: '1px', 
+            backgroundColor: '#EEEEEE', 
+            maxWidth: '1100px',
+            margin: '0 auto',
+            width: 'calc(100% - 80px)'
+          }}></div>
         </div>
       </div>
     </section>
@@ -194,3 +205,7 @@ const Milestones: React.FC<MilestonesProps> = ({
 };
 
 export default Milestones;
+
+
+
+

@@ -6,30 +6,19 @@ const StartNowPage = () => {
   return (
     <main>
       {/* Hero Section */}
-      <div style={{ padding: '80px 0 60px 0', background: '#f9f9f9' }}>
+      <div style={{ padding: '60px 0 60px 0', background: '#f9f9f9' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
           <h1 style={{ 
             fontSize: '3.5rem', 
             fontWeight: '700', 
             color: '#111827',
-            marginBottom: '1.5rem',
+            marginBottom: '0',
             fontFamily: 'DM Serif Display, serif'
           }}>
             Start Your Journey Today
           </h1>
-          <p style={{ 
-            fontSize: '1.25rem', 
-            color: '#6b7280', 
-            maxWidth: '600px', 
-            margin: '0 auto',
-            lineHeight: '1.7'
-          }}>
-            Take the first step towards digital freedom and reclaim control over your screen time.
-          </p>
         </div>
       </div>
-
-      <Separator />
       
       {/* Plans Section */}
       <div style={{ padding: '80px 0', background: '#ffffff' }}>

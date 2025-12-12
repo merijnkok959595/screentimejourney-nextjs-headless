@@ -12,120 +12,208 @@ const ContactPage = () => {
   return (
     <main>
       {/* Hero Section */}
-      <div style={{ padding: '80px 0 60px 0', background: '#f9f9f9' }}>
+      <div style={{ padding: '60px 0 60px 0', background: '#f9f9f9' }}>
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
           <h1 style={{ 
             fontSize: '3.5rem', 
             fontWeight: '700', 
             color: '#111827',
-            marginBottom: '1.5rem',
+            marginBottom: '0',
             fontFamily: 'DM Serif Display, serif'
           }}>
             Get In Touch
           </h1>
-          <p style={{ 
-            fontSize: '1.25rem', 
-            color: '#6b7280', 
-            maxWidth: '600px', 
-            margin: '0 auto',
-            lineHeight: '1.7'
-          }}>
-            We're here to support you on your digital wellness journey. Reach out with questions, feedback, or just to say hello.
-          </p>
         </div>
       </div>
-
-      <Separator />
       
-      {/* Contact Information */}
-      <div style={{ padding: '80px 0', background: '#ffffff' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '60px' }}>
-            {/* Contact Info */}
-            <div>
-              <h2 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '700', 
+      {/* Contact Information Section - Using existing grey background pattern */}
+      <div style={{ 
+        padding: '40px 0 80px 0', 
+        background: '#f9f9f9',
+        minHeight: '200px'
+      }}>
+        <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 20px' }}>
+          
+          {/* Contact Information */}
+          <div style={{ marginBottom: '48px' }}>
+            <div style={{
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '24px',
+              paddingBottom: '12px',
+              borderBottom: '2px solid #f3f4f6'
+            }}>
+              <h2 style={{
+                fontSize: '1.75rem',
+                fontWeight: '700',
                 color: '#111827',
-                marginBottom: '2rem',
+                margin: '0',
                 fontFamily: 'DM Serif Display, serif'
               }}>
                 Contact Information
               </h2>
-              
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '32px' }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <div style={{ fontSize: '1.5rem' }}>✉️</div>
-                  <div>
-                    <h3 style={{ fontSize: '1.125rem', fontWeight: '600', color: '#111827', marginBottom: '8px' }}>
-                      Email
-                    </h3>
-                    <a 
-                      href="mailto:info@screentimejourney.com" 
-                      style={{ color: '#2e0456', textDecoration: 'none', fontSize: '1rem' }}
-                    >
-                      info@screentimejourney.com
-                    </a>
-                    <p style={{ color: '#6b7280', fontSize: '0.875rem', margin: '4px 0 0 0' }}>
-                      We typically respond within 24 hours
-                    </p>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <div style={{ fontSize: '1.5rem' }}>📞</div>
-                  <div>
-                    <h3 style={{ fontSize: '1.125rem', fontWeight: '600', color: '#111827', marginBottom: '8px' }}>
-                      Phone
-                    </h3>
-                    <a 
-                      href="tel:+31649232152" 
-                      style={{ color: '#2e0456', textDecoration: 'none', fontSize: '1rem' }}
-                    >
-                      +31 6 49232152
-                    </a>
-                    <p style={{ color: '#6b7280', fontSize: '0.875rem', margin: '4px 0 0 0' }}>
-                      Available Monday-Friday, 9AM-6PM CET
-                    </p>
-                  </div>
-                </div>
-
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: '16px' }}>
-                  <div style={{ fontSize: '1.5rem' }}>📍</div>
-                  <div>
-                    <h3 style={{ fontSize: '1.125rem', fontWeight: '600', color: '#111827', marginBottom: '8px' }}>
-                      Address
-                    </h3>
-                    <p style={{ color: '#6b7280', fontSize: '1rem', lineHeight: '1.6', margin: '0' }}>
-                      Linnaeusstraat 35F-14<br />
-                      Amsterdam, Netherlands
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
 
-            {/* Contact Form */}
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '24px' }}>
+              
+              {/* Email */}
+              <div style={{
+                background: '#ffffff',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                overflow: 'hidden',
+                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                padding: '24px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
+                  <h3 style={{ 
+                    fontSize: '1.25rem', 
+                    fontWeight: '700', 
+                    color: '#111827', 
+                    margin: '0',
+                    fontFamily: 'DM Serif Display, serif'
+                  }}>Email</h3>
+                </div>
+                <a 
+                  href="mailto:info@screentimejourney.com"
+                  style={{ 
+                    color: '#111827', 
+                    textDecoration: 'none', 
+                    fontSize: '0.95rem', 
+                    fontWeight: '400',
+                    wordBreak: 'break-all',
+                    display: 'block',
+                    fontFamily: 'Inter, sans-serif'
+                  }}
+                >
+                  info@screentimejourney.com
+                </a>
+                <p style={{ 
+                  color: '#6b7280', 
+                  fontSize: '0.9rem', 
+                  margin: '8px 0 0 0', 
+                  fontStyle: 'italic',
+                  fontWeight: '400',
+                  fontFamily: 'Inter, sans-serif'
+                }}>
+                  We typically respond within 24 hours
+                </p>
+              </div>
+
+              {/* Phone */}
+              <div style={{
+                background: '#ffffff',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                overflow: 'hidden',
+                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                padding: '24px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
+                  <h3 style={{ 
+                    fontSize: '1.25rem', 
+                    fontWeight: '700', 
+                    color: '#111827', 
+                    margin: '0',
+                    fontFamily: 'DM Serif Display, serif'
+                  }}>Phone</h3>
+                </div>
+                <a 
+                  href="tel:+31649232152"
+                  style={{ 
+                    color: '#111827', 
+                    textDecoration: 'none', 
+                    fontSize: '1.1rem', 
+                    fontWeight: '400',
+                    display: 'block',
+                    fontFamily: 'Inter, sans-serif'
+                  }}
+                >
+                  +31 6 49232152
+                </a>
+                <p style={{ 
+                  color: '#6b7280', 
+                  fontSize: '0.9rem', 
+                  margin: '8px 0 0 0', 
+                  fontStyle: 'italic',
+                  fontWeight: '400',
+                  fontFamily: 'Inter, sans-serif'
+                }}>
+                  Available Monday-Friday, 9AM-6PM CET
+                </p>
+              </div>
+
+              {/* Address */}
+              <div style={{
+                background: '#ffffff',
+                borderRadius: '8px',
+                border: '1px solid #e5e7eb',
+                overflow: 'hidden',
+                boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+                padding: '24px'
+              }}>
+                <div style={{ display: 'flex', alignItems: 'center', marginBottom: '12px' }}>
+                  <h3 style={{ 
+                    fontSize: '1.25rem', 
+                    fontWeight: '700', 
+                    color: '#111827', 
+                    margin: '0',
+                    fontFamily: 'DM Serif Display, serif'
+                  }}>Address</h3>
+                </div>
+                <p style={{ 
+                  color: '#111827', 
+                  fontSize: '1rem', 
+                  lineHeight: '1.5', 
+                  margin: '0', 
+                  fontWeight: '400',
+                  fontFamily: 'Inter, sans-serif'
+                }}>
+                  Linnaeusstraat 35F-14<br />
+                  Amsterdam, Netherlands
+                </p>
+              </div>
+            </div>
+          </div>
+
+          {/* Contact Form */}
+          <div style={{ marginBottom: '48px' }}>
             <div style={{
-              background: '#f9f9f9',
-              padding: '40px',
-              borderRadius: '16px',
-              border: '1px solid #e5e7eb'
+              display: 'flex',
+              alignItems: 'center',
+              marginBottom: '24px',
+              paddingBottom: '12px',
+              borderBottom: '2px solid #f3f4f6'
             }}>
-              <h2 style={{ 
-                fontSize: '2rem', 
-                fontWeight: '700', 
+              <h2 style={{
+                fontSize: '1.75rem',
+                fontWeight: '700',
                 color: '#111827',
-                marginBottom: '2rem',
+                margin: '0',
                 fontFamily: 'DM Serif Display, serif'
               }}>
                 Send us a Message
               </h2>
-              
-              <form style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
+            </div>
+
+            <div style={{
+              background: '#ffffff',
+              borderRadius: '8px',
+              border: '1px solid #e5e7eb',
+              boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.1)',
+              padding: '32px'
+            }}>
+              <form style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
                 <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      fontSize: '0.9rem', 
+                      fontWeight: '600', 
+                      color: '#374151', 
+                      marginBottom: '6px',
+                      fontFamily: 'Inter, sans-serif'
+                    }}>
                       First Name
                     </label>
                     <input 
@@ -134,14 +222,23 @@ const ContactPage = () => {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1px solid #d1d5db',
-                        borderRadius: '8px',
+                        borderRadius: '6px',
                         fontSize: '1rem',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        transition: 'border-color 0.2s',
+                        fontFamily: 'Inter, sans-serif'
                       }}
                     />
                   </div>
                   <div>
-                    <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+                    <label style={{ 
+                      display: 'block', 
+                      fontSize: '0.9rem', 
+                      fontWeight: '600', 
+                      color: '#374151', 
+                      marginBottom: '6px',
+                      fontFamily: 'Inter, sans-serif'
+                    }}>
                       Last Name
                     </label>
                     <input 
@@ -150,16 +247,24 @@ const ContactPage = () => {
                         width: '100%',
                         padding: '12px 16px',
                         border: '1px solid #d1d5db',
-                        borderRadius: '8px',
+                        borderRadius: '6px',
                         fontSize: '1rem',
-                        boxSizing: 'border-box'
+                        boxSizing: 'border-box',
+                        fontFamily: 'Inter, sans-serif'
                       }}
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+                  <label style={{ 
+                    display: 'block', 
+                    fontSize: '0.9rem', 
+                    fontWeight: '600', 
+                    color: '#374151', 
+                    marginBottom: '6px',
+                    fontFamily: 'Inter, sans-serif'
+                  }}>
                     Email
                   </label>
                   <input 
@@ -168,15 +273,23 @@ const ContactPage = () => {
                       width: '100%',
                       padding: '12px 16px',
                       border: '1px solid #d1d5db',
-                      borderRadius: '8px',
+                      borderRadius: '6px',
                       fontSize: '1rem',
-                      boxSizing: 'border-box'
+                      boxSizing: 'border-box',
+                      fontFamily: 'Inter, sans-serif'
                     }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+                  <label style={{ 
+                    display: 'block', 
+                    fontSize: '0.9rem', 
+                    fontWeight: '600', 
+                    color: '#374151', 
+                    marginBottom: '6px',
+                    fontFamily: 'Inter, sans-serif'
+                  }}>
                     Subject
                   </label>
                   <input 
@@ -185,15 +298,23 @@ const ContactPage = () => {
                       width: '100%',
                       padding: '12px 16px',
                       border: '1px solid #d1d5db',
-                      borderRadius: '8px',
+                      borderRadius: '6px',
                       fontSize: '1rem',
-                      boxSizing: 'border-box'
+                      boxSizing: 'border-box',
+                      fontFamily: 'Inter, sans-serif'
                     }}
                   />
                 </div>
 
                 <div>
-                  <label style={{ display: 'block', fontSize: '0.875rem', fontWeight: '500', color: '#374151', marginBottom: '8px' }}>
+                  <label style={{ 
+                    display: 'block', 
+                    fontSize: '0.9rem', 
+                    fontWeight: '600', 
+                    color: '#374151', 
+                    marginBottom: '6px',
+                    fontFamily: 'Inter, sans-serif'
+                  }}>
                     Message
                   </label>
                   <textarea 
@@ -202,10 +323,11 @@ const ContactPage = () => {
                       width: '100%',
                       padding: '12px 16px',
                       border: '1px solid #d1d5db',
-                      borderRadius: '8px',
+                      borderRadius: '6px',
                       fontSize: '1rem',
                       resize: 'vertical',
-                      boxSizing: 'border-box'
+                      boxSizing: 'border-box',
+                      fontFamily: 'Inter, sans-serif'
                     }}
                     placeholder="Tell us how we can help you on your digital wellness journey..."
                   />
@@ -213,17 +335,8 @@ const ContactPage = () => {
 
                 <button
                   type="submit"
-                  style={{
-                    padding: '16px 32px',
-                    backgroundColor: '#2e0456',
-                    color: 'white',
-                    border: 'none',
-                    borderRadius: '8px',
-                    fontSize: '1.125rem',
-                    fontWeight: '600',
-                    cursor: 'pointer',
-                    transition: 'all 0.3s ease'
-                  }}
+                  className="btn-primary"
+                  style={{ alignSelf: 'flex-start', marginTop: '8px' }}
                 >
                   Send Message
                 </button>
@@ -234,83 +347,6 @@ const ContactPage = () => {
       </div>
 
       <Separator />
-
-      {/* Additional Support */}
-      <div style={{ padding: '80px 0', background: '#f9f9f9' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 20px', textAlign: 'center' }}>
-          <h2 style={{ 
-            fontSize: '2.5rem', 
-            fontWeight: '700', 
-            marginBottom: '2rem',
-            fontFamily: 'DM Serif Display, serif',
-            color: '#111827'
-          }}>
-            Other Ways to Get Support
-          </h2>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '40px', marginTop: '60px' }}>
-            <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '20px' }}>❓</div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '16px', color: '#111827' }}>
-                FAQ
-              </h3>
-              <p style={{ color: '#6b7280', lineHeight: '1.7', marginBottom: '20px' }}>
-                Find quick answers to common questions about Screen Time Journey.
-              </p>
-              <a 
-                href="/faq"
-                style={{ 
-                  color: '#2e0456',
-                  textDecoration: 'none',
-                  fontWeight: '600'
-                }}
-              >
-                Browse FAQ →
-              </a>
-            </div>
-
-            <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '20px' }}>👥</div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '16px', color: '#111827' }}>
-                Community
-              </h3>
-              <p style={{ color: '#6b7280', lineHeight: '1.7', marginBottom: '20px' }}>
-                Join thousands of others on their digital wellness journey.
-              </p>
-              <a 
-                href="/leaderboard"
-                style={{ 
-                  color: '#2e0456',
-                  textDecoration: 'none',
-                  fontWeight: '600'
-                }}
-              >
-                Join Community →
-              </a>
-            </div>
-
-            <div style={{ textAlign: 'center', padding: '40px 20px' }}>
-              <div style={{ fontSize: '3rem', marginBottom: '20px' }}>🚀</div>
-              <h3 style={{ fontSize: '1.5rem', fontWeight: '600', marginBottom: '16px', color: '#111827' }}>
-                Get Started
-              </h3>
-              <p style={{ color: '#6b7280', lineHeight: '1.7', marginBottom: '20px' }}>
-                Ready to begin your transformation? Start your journey today.
-              </p>
-              <a 
-                href="/start-now"
-                style={{ 
-                  color: '#2e0456',
-                  textDecoration: 'none',
-                  fontWeight: '600'
-                }}
-              >
-                Start Journey →
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
 
       <Footer />
     </main>

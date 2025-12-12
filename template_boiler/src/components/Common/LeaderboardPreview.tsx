@@ -13,7 +13,17 @@ interface LeaderboardUser {
   };
 }
 
-const LeaderboardPreview: React.FC = () => {
+interface LeaderboardPreviewProps {
+  showTitle?: boolean;
+  showButton?: boolean;
+  title?: string;
+}
+
+const LeaderboardPreview: React.FC<LeaderboardPreviewProps> = ({ 
+  showTitle = false, 
+  showButton = true, 
+  title = "Community Leaderboard" 
+}) => {
   const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male');
   const [leaderboardData, setLeaderboardData] = useState<{
     male: LeaderboardUser[];
@@ -123,6 +133,19 @@ const LeaderboardPreview: React.FC = () => {
   return (
     <section className="stj-leaderboard-preview-section">
       <div className="stj-leaderboard-preview-container">
+        {showTitle && (
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              color: 'var(--brand-text)',
+              fontFamily: 'var(--font-heading)',
+              margin: '0'
+            }}>
+              {title}
+            </h2>
+          </div>
+        )}
         <div className="stj-preview-content">
 
           {/* Gender selection */}
@@ -182,13 +205,15 @@ const LeaderboardPreview: React.FC = () => {
           </div>
 
           {/* See leaderboard button */}
-          <div className="stj-preview-actions">
-            <Link href="/leaderboard" className="button button--primary default">
-              <span className="grid align-items-center">
-                See leaderboard
-              </span>
-            </Link>
-          </div>
+          {showButton && (
+            <div className="stj-preview-actions">
+              <Link href="/leaderboard" className="button button--primary default">
+                <span className="grid align-items-center">
+                  See leaderboard
+                </span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -196,3 +221,7 @@ const LeaderboardPreview: React.FC = () => {
 };
 
 export default LeaderboardPreview;
+
+
+
+

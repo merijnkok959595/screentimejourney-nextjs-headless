@@ -28,6 +28,7 @@ interface LeaderboardProps {
   femaleLabel?: string;
 }
 
+
 const Leaderboard: React.FC<LeaderboardProps> = ({
   title = "Journey Leaderboard",
   subtitle = "Top performers on their Screen Time Journey",
@@ -100,12 +101,13 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
 
   useEffect(() => {
     loadLeaderboard(true);
-  }, []);
+  }, [currentFilter]);
 
   const handleGenderFilter = (filter: 'male' | 'female') => {
     setCurrentFilter(filter);
     setCurrentPage(1);
-    loadLeaderboard(true);
+    setLeaderboardData([]); // Clear existing data
+    setIsLoading(true); // Show loading state
   };
 
   const handleLoadMore = () => {
@@ -115,7 +117,7 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
     }
   };
 
-  // Filter and rank data
+  // Filter and rank data from API
   const filteredData = leaderboardData
     .filter(entry => entry.gender === currentFilter)
     .sort((a, b) => {
@@ -248,9 +250,22 @@ const Leaderboard: React.FC<LeaderboardProps> = ({
 
           {/* Start Now Button */}
           <div className="stj-start-now-section">
-            <Link href="https://www.screentimejourney.com/products/screentimejourney" className="button button--primary default">
-              <span className="grid align-items-center">Start now</span>
-            </Link>
+            <div className="stj-start-now-container">
+              <Link href="/product/screentimejourney" className="button button--primary default">
+                <span className="grid align-items-center">Start now</span>
+              </Link>
+            </div>
+          </div>
+          
+          {/* Separator */}
+          <div style={{ padding: '20px 0 10px 0' }}>
+            <div style={{ 
+              height: '1px', 
+              backgroundColor: '#EEEEEE', 
+              maxWidth: '1200px',
+              margin: '0 auto',
+              width: 'calc(100% - 80px)'
+            }}></div>
           </div>
         </div>
       </div>
@@ -331,3 +346,7 @@ const TableRow: React.FC<{ entry: LeaderboardEntry; rank: number }> = ({ entry, 
 };
 
 export default Leaderboard;
+
+
+
+

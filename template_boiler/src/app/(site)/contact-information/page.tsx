@@ -8,7 +8,6 @@ const ContactInformationPage = () => {
         <div className="page-width">
           <div className="page-header-content">
             <h1 className="page-title">Contact Information</h1>
-            <p className="page-subtitle">How to reach Screen Time Journey</p>
           </div>
         </div>
       </div>

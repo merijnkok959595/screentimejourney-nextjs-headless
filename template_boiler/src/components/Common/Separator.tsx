@@ -26,3 +26,7 @@ const Separator: React.FC<SeparatorProps> = ({ className = "", style = {}, paddi
 };
 
 export default Separator;
+
+
+
+

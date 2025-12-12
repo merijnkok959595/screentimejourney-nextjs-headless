@@ -12,7 +12,17 @@ interface MilestoneData {
   media_url?: string;
 }
 
-const MilestonesPreview: React.FC = () => {
+interface MilestonesPreviewProps {
+  showTitle?: boolean;
+  showButton?: boolean;
+  title?: string;
+}
+
+const MilestonesPreview: React.FC<MilestonesPreviewProps> = ({ 
+  showTitle = false, 
+  showButton = true, 
+  title = "Weekly Milestones" 
+}) => {
   const [selectedGender, setSelectedGender] = useState<'male' | 'female'>('male');
   const [milestonesData, setMilestonesData] = useState<{
     male: MilestoneData[];
@@ -110,6 +120,19 @@ const MilestonesPreview: React.FC = () => {
   return (
     <section className="stj-milestone-preview-section">
       <div className="stj-milestone-preview-container">
+        {showTitle && (
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <h2 style={{
+              fontSize: '2.5rem',
+              fontWeight: '700',
+              color: 'var(--brand-text)',
+              fontFamily: 'var(--font-heading)',
+              margin: '0'
+            }}>
+              {title}
+            </h2>
+          </div>
+        )}
         <div className="stj-milestone-preview-content">
           
           {/* Gender selection */}
@@ -164,13 +187,15 @@ const MilestonesPreview: React.FC = () => {
           </div>
 
           {/* See milestones button */}
-          <div className="stj-milestone-actions">
-            <Link href="/milestones" className="button button--primary default">
-              <span className="grid align-items-center">
-                See milestones
-              </span>
-            </Link>
-          </div>
+          {showButton && (
+            <div className="stj-milestone-actions">
+              <Link href="/milestones" className="button button--primary default">
+                <span className="grid align-items-center">
+                  See milestones
+                </span>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </section>
@@ -178,3 +203,7 @@ const MilestonesPreview: React.FC = () => {
 };
 
 export default MilestonesPreview;
+
+
+
+

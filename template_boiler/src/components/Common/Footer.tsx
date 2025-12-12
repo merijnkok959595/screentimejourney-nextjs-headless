@@ -38,11 +38,11 @@ const Footer: React.FC = () => {
         <div className="footer-column">
           <h4 className="footer-title">Blog Posts</h4>
           <div className="footer-links">
-            <Link className="footer-link" href="/blogs/blog-grid">Why Quitting Porn Is the ...</Link>
-            <Link className="footer-link" href="/blogs/blog-grid">The Dopamine Reset: How to Break ...</Link>
-            <Link className="footer-link" href="/blogs/blog-grid">From Screen Addiction to Freedom ...</Link>
-            <Link className="footer-link" href="/blogs/blog-grid">10 Proven Strategies to Build Discipline ...</Link>
-            <Link className="footer-link" href="/blogs/blog-grid">How to Take Control of Your Screen Time ...</Link>
+            <Link className="footer-link" href="/blog/why-quitting-porn-is-the-key-to-digital-freedom">Why Quitting Porn Is the ...</Link>
+            <Link className="footer-link" href="/blog/dopamine-reset-how-to-break-free">The Dopamine Reset: How to Break ...</Link>
+            <Link className="footer-link" href="/blog/from-screen-addiction-to-freedom">From Screen Addiction to Freedom ...</Link>
+            <Link className="footer-link" href="/blog/10-proven-strategies-build-discipline">10 Proven Strategies to Build Discipline ...</Link>
+            <Link className="footer-link" href="/blog/how-to-take-control-screen-time">How to Take Control of Your Screen Time ...</Link>
           </div>
         </div>
       </div>
@@ -52,12 +52,11 @@ const Footer: React.FC = () => {
         <div className="footer-policies">
           <span>2025, SCREENTIMEJOURNEY ©</span>
           <div className="footer-policy-links">
-            <Link href="/privacy-policy" className="footer-policy-link">Privacy policy</Link>
-            <Link href="/terms-of-service" className="footer-policy-link">Terms of service</Link>
-            <Link href="/refund-policy" className="footer-policy-link">Refund policy</Link>
-            <Link href="/shipping-policy" className="footer-policy-link">Shipping policy</Link>
-            <Link href="/contact-information" className="footer-policy-link">Contact information</Link>
-            <Link href="/cookie-preferences" className="footer-policy-link">Cookie preferences</Link>
+            <Link href="/privacy_policy" className="footer-policy-link">Privacy policy</Link>
+            <Link href="/terms_of_service" className="footer-policy-link">Terms of service</Link>
+            <Link href="/refund_policy" className="footer-policy-link">Refund policy</Link>
+            <Link href="/shipping_policy" className="footer-policy-link">Shipping policy</Link>
+            <Link href="/cookie_preferences" className="footer-policy-link">Cookie preferences</Link>
           </div>
         </div>
       </div>
