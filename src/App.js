@@ -3,6 +3,9 @@ import PhoneInput, { getCountryCallingCode, isPossiblePhoneNumber } from 'react-
 import 'react-phone-number-input/style.css';
 import './App.css';
 import './styles/brand-theme.css';
+import { useAuth } from './contexts/AuthContext';
+import AuthModal from './components/auth/AuthModal';
+import PaymentModal from './components/payments/PaymentModal';
 
 // Custom debounce hook for real-time username validation
 function useDebounce(value, delay) {
@@ -442,11 +445,20 @@ function AudioPlayer({ audioUrl }) {
 }
 
 function App() {
+  // Authentication integration
+  const { user, loading: authLoading, isAuthenticated, signOut } = useAuth();
+  
   const [customerData, setCustomerData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [initialLoad, setInitialLoad] = useState(true); // Track if this is the first load
   const [error, setError] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
+  
+  // Authentication modals
+  const [showAuthModal, setShowAuthModal] = useState(false);
+  const [authModalMode, setAuthModalMode] = useState('signin');
+  const [showPaymentModal, setShowPaymentModal] = useState(false);
+  const [selectedPlan, setSelectedPlan] = useState('premium');
   const [testScenario, setTestScenario] = useState('ground_zero');
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [onboardStep, setOnboardStep] = useState(1);
@@ -4048,6 +4060,43 @@ function App() {
             {/* Action Buttons */}
             <div className="header-actions">
               <div className="header-buttons-desktop">
+                {isAuthenticated ? (
+                  <>
+                    <button 
+                      className="btn-outline-secondary"
+                      onClick={() => setShowPaymentModal(true)}
+                    >
+                      Upgrade
+                    </button>
+                    <button 
+                      className="btn-outline-primary"
+                      onClick={() => signOut()}
+                    >
+                      Sign Out
+                    </button>
+                  </>
+                ) : (
+                  <>
+                    <button 
+                      className="btn-outline-secondary"
+                      onClick={() => {
+                        setAuthModalMode('signin');
+                        setShowAuthModal(true);
+                      }}
+                    >
+                      Sign In
+                    </button>
+                    <button 
+                      className="btn-outline-primary"
+                      onClick={() => {
+                        setAuthModalMode('signup');
+                        setShowAuthModal(true);
+                      }}
+                    >
+                      Sign Up
+                    </button>
+                  </>
+                )}
                 <a className="btn-outline-primary" href="https://www.screentimejourney.com" target="_self" rel="noopener noreferrer">Home</a>
               </div>
             </div>
@@ -7153,6 +7202,20 @@ function App() {
           </>
         </div>
       </div>
+
+      {/* Authentication Modal */}
+      <AuthModal 
+        isOpen={showAuthModal}
+        onClose={() => setShowAuthModal(false)}
+        initialMode={authModalMode}
+      />
+
+      {/* Payment Modal */}
+      <PaymentModal 
+        isOpen={showPaymentModal}
+        onClose={() => setShowPaymentModal(false)}
+        subscriptionType={selectedPlan}
+      />
     </div>
   );
 }
