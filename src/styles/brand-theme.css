@@ -658,6 +658,61 @@ p, span, div {
   transition: padding 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* Fix mobile header border doubling */
+@media (max-width: 768px) {
+  .header {
+    border-bottom: 1px solid #e5e5e5; /* Ensure single border */
+  }
+  
+  .header.scrolled {
+    border-bottom: 1px solid #e5e5e5; /* Maintain border on scroll */
+  }
+}
+
+/* Mobile Product Image Sizing */
+.product-image,
+.milestone-image,
+.device-image,
+img[src*="milestones"],
+img[src*="Milestones"] {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+@media (max-width: 768px) {
+  .product-image,
+  .milestone-image,
+  .device-image,
+  img[src*="milestones"],
+  img[src*="Milestones"] {
+    max-width: 85%; /* Reduce from full width */
+    margin: 0 auto; /* Center the image */
+    padding: 0 1.5rem; /* Add horizontal padding */
+    border-radius: 8px;
+    display: block;
+  }
+  
+  /* Milestone/Progress images */
+  .milestone-card img,
+  .progress-image img,
+  .dashboard-image img {
+    max-width: 80%;
+    margin: 1rem auto;
+    padding: 0;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Ensure proper spacing around images */
+  .image-container,
+  .milestone-container,
+  .media-container {
+    padding: 1rem;
+    text-align: center;
+  }
+}
+
 .header.scrolled {
   padding: 0; /* No padding on scroll */
 }
@@ -1035,7 +1090,7 @@ p, span, div {
 
 .mobile-menu-dropdown {
   position: fixed;
-  top: calc(42px + 85px + 1px); /* Dynamic: announcement + header + border = 128px */
+  top: calc(42px + 85px); /* Dynamic: announcement + header = 127px (remove +1px to fix border) */
   left: 0;
   bottom: 0;
   width: 100%;
@@ -1047,6 +1102,7 @@ p, span, div {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  border-top: 1px solid #e5e5e5; /* Add clean border separation */
 }
 
 /* When header is scrolled, adjust menu position - target descendant */

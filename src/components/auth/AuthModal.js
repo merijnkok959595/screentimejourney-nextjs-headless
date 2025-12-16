@@ -3,7 +3,7 @@ import { useAuth } from '../../contexts/AuthContext';
 import PhoneInput, { isPossiblePhoneNumber } from 'react-phone-number-input';
 import 'react-phone-number-input/style.css';
 
-const AuthModal = ({ isOpen, onClose, initialMode = 'signin' }) => {
+const AuthModal = ({ isOpen, onClose, initialMode = 'signin', onAuthSuccess }) => {
   const [mode, setMode] = useState(initialMode); // 'signin', 'signup', 'confirm', 'forgot'
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState('');
@@ -74,7 +74,10 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'signin' }) => {
     
     if (result.success) {
       setSuccess('Welcome back!');
-      setTimeout(() => handleClose(), 1000);
+      setTimeout(() => {
+        handleClose();
+        if (onAuthSuccess) onAuthSuccess('signin');
+      }, 1000);
     } else {
       setError(result.error);
     }
@@ -91,8 +94,8 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'signin' }) => {
     if (result.success) {
       setSuccess('Email confirmed! You can now sign in.');
       setTimeout(() => {
-        setMode('signin');
-        setSuccess('');
+        handleClose();
+        if (onAuthSuccess) onAuthSuccess('signup');
       }, 2000);
     } else {
       setError(result.error);

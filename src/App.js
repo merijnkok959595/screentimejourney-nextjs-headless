@@ -6,6 +6,7 @@ import './styles/brand-theme.css';
 import { useAuth } from './contexts/AuthContext';
 import AuthModal from './components/auth/AuthModal';
 import PaymentModal from './components/payments/PaymentModal';
+import StickyStartButton from './components/StickyStartButton';
 
 // Custom debounce hook for real-time username validation
 function useDebounce(value, delay) {
@@ -459,6 +460,33 @@ function App() {
   const [authModalMode, setAuthModalMode] = useState('signin');
   const [showPaymentModal, setShowPaymentModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState('premium');
+  
+  // Sticky button state
+  const [showStickyButton, setShowStickyButton] = useState(true);
+  const [stickyButtonText, setStickyButtonText] = useState('Get Started Now');
+
+  // Sticky button handlers
+  const handleGetStarted = () => {
+    if (isAuthenticated) {
+      // User is authenticated, show payment modal
+      setSelectedPlan('premium');
+      setShowPaymentModal(true);
+    } else {
+      // User not authenticated, redirect to product page
+      window.open('https://www.screentimejourney.com/products/screentimejourney', '_blank');
+    }
+  };
+
+  const handleSignUpFirst = () => {
+    // Show signup modal first, then payment after successful signup
+    setAuthModalMode('signup');
+    setShowAuthModal(true);
+  };
+
+  // Hide sticky button when modals are open
+  useEffect(() => {
+    setShowStickyButton(!showAuthModal && !showPaymentModal);
+  }, [showAuthModal, showPaymentModal]);
   const [testScenario, setTestScenario] = useState('ground_zero');
   const [showOnboarding, setShowOnboarding] = useState(false);
   const [onboardStep, setOnboardStep] = useState(1);
@@ -4062,17 +4090,21 @@ function App() {
               <div className="header-buttons-desktop">
                 {isAuthenticated ? (
                   <>
-                    <button 
-                      className="btn-outline-secondary"
-                      onClick={() => setShowPaymentModal(true)}
-                    >
-                      Upgrade
-                    </button>
+                    <a className="btn-outline-secondary" href="#dashboard">Dashboard</a>
                     <button 
                       className="btn-outline-primary"
-                      onClick={() => signOut()}
+                      onClick={async () => {
+                        await signOut();
+                        // Clear all cookies and local storage
+                        document.cookie.split(";").forEach(function(c) { 
+                          document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+                        });
+                        localStorage.clear();
+                        sessionStorage.clear();
+                        window.location.reload();
+                      }}
                     >
-                      Sign Out
+                      Logout
                     </button>
                   </>
                 ) : (
@@ -4084,20 +4116,11 @@ function App() {
                         setShowAuthModal(true);
                       }}
                     >
-                      Sign In
+                      Login
                     </button>
-                    <button 
-                      className="btn-outline-primary"
-                      onClick={() => {
-                        setAuthModalMode('signup');
-                        setShowAuthModal(true);
-                      }}
-                    >
-                      Sign Up
-                    </button>
+                    <a className="btn-outline-primary" href="https://www.screentimejourney.com/products/screentimejourney" target="_self" rel="noopener noreferrer">Get Started</a>
                   </>
                 )}
-                <a className="btn-outline-primary" href="https://www.screentimejourney.com" target="_self" rel="noopener noreferrer">Home</a>
               </div>
             </div>
           </div>
@@ -6207,24 +6230,55 @@ function App() {
                     </a>
                   </div>
                   <div className="mobile-menu-actions">
-                    <a 
-                      className="btn-primary" 
-                      href="https://www.screentimejourney.com" 
-                      target="_self" 
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileMenuOpen(false)}
-                    >
-                      Home
-                    </a>
-                    <button 
-                      className="btn-secondary"
-                      onClick={() => {
-                        document.cookie = 'stj_session=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT';
-                        window.location.href = 'https://xpvznx-9w.myshopify.com/account/logout?return_url=/';
-                      }}
-                    >
-                      Logout
-                    </button>
+                    {isAuthenticated ? (
+                      <>
+                        <a 
+                          className="btn-secondary" 
+                          href="#dashboard"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Dashboard
+                        </a>
+                        <button 
+                          className="btn-primary"
+                          onClick={async () => {
+                            setMobileMenuOpen(false);
+                            await signOut();
+                            // Clear all cookies and local storage
+                            document.cookie.split(";").forEach(function(c) { 
+                              document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";path=/"); 
+                            });
+                            localStorage.clear();
+                            sessionStorage.clear();
+                            window.location.reload();
+                          }}
+                        >
+                          Logout
+                        </button>
+                      </>
+                    ) : (
+                      <>
+                        <button 
+                          className="btn-secondary"
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            setAuthModalMode('signin');
+                            setShowAuthModal(true);
+                          }}
+                        >
+                          Login
+                        </button>
+                        <a 
+                          className="btn-primary" 
+                          href="https://www.screentimejourney.com/products/screentimejourney" 
+                          target="_self" 
+                          rel="noopener noreferrer"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          Get Started
+                        </a>
+                      </>
+                    )}
                   </div>
                 </div>
               </div>
@@ -7208,6 +7262,13 @@ function App() {
         isOpen={showAuthModal}
         onClose={() => setShowAuthModal(false)}
         initialMode={authModalMode}
+        onAuthSuccess={(type) => {
+          // After successful authentication, show payment modal
+          setTimeout(() => {
+            setSelectedPlan('premium');
+            setShowPaymentModal(true);
+          }, 500);
+        }}
       />
 
       {/* Payment Modal */}
@@ -7215,6 +7276,14 @@ function App() {
         isOpen={showPaymentModal}
         onClose={() => setShowPaymentModal(false)}
         subscriptionType={selectedPlan}
+      />
+
+      {/* Sticky Start Now Button */}
+      <StickyStartButton
+        onGetStarted={handleGetStarted}
+        onSignUpFirst={handleSignUpFirst}
+        isVisible={showStickyButton}
+        text={isAuthenticated ? 'Upgrade Now' : 'Get Started Now'}
       />
     </div>
   );
