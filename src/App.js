@@ -450,7 +450,7 @@ function App() {
   const { user, loading: authLoading, isAuthenticated, signOut } = useAuth();
   
   const [customerData, setCustomerData] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true); // Track if this is the first load
   const [error, setError] = useState(null);
   const [authenticated, setAuthenticated] = useState(false);
@@ -472,8 +472,9 @@ function App() {
       setSelectedPlan('premium');
       setShowPaymentModal(true);
     } else {
-      // User not authenticated, redirect to product page
-      window.open('https://www.screentimejourney.com/products/screentimejourney', '_blank');
+      // User not authenticated, show signup modal first
+      setAuthModalMode('signup');
+      setShowAuthModal(true);
     }
   };
 
@@ -4052,8 +4053,8 @@ function App() {
     }
   };
 
-  // Show full loading screen until ALL data is ready
-  if (loading || profileLoading || milestonesLoading) {
+  // Skip loading screen - go directly to app
+  if (false && (loading || profileLoading || milestonesLoading)) {
     return (
       <div className="App" style={{ background: 'var(--page-bg)', minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
         {/* Announcement Bar */}
@@ -4118,7 +4119,12 @@ function App() {
                     >
                       Login
                     </button>
-                    <a className="btn-outline-primary" href="https://www.screentimejourney.com/products/screentimejourney" target="_self" rel="noopener noreferrer">Get Started</a>
+                    <button 
+                      className="btn-outline-primary"
+                      onClick={handleGetStarted}
+                    >
+                      Get Started
+                    </button>
                   </>
                 )}
               </div>
@@ -6201,15 +6207,22 @@ function App() {
                     >
                       About Me
                     </a>
-                    <a 
+                    <button 
                       className="mobile-menu-item" 
-                      href="https://www.screentimejourney.com/products/screentimejourney" 
-                      target="_self" 
-                      rel="noopener noreferrer"
-                      onClick={() => setMobileMenuOpen(false)}
+                      onClick={() => {
+                        setMobileMenuOpen(false);
+                        handleGetStarted();
+                      }}
+                      style={{
+                        background: 'none',
+                        border: 'none',
+                        width: '100%',
+                        textAlign: 'left',
+                        cursor: 'pointer'
+                      }}
                     >
                       Start Now
-                    </a>
+                    </button>
                     <a 
                       className="mobile-menu-item" 
                       href="https://www.screentimejourney.com/pages/milestones" 
@@ -6268,15 +6281,15 @@ function App() {
                         >
                           Login
                         </button>
-                        <a 
-                          className="btn-primary" 
-                          href="https://www.screentimejourney.com/products/screentimejourney" 
-                          target="_self" 
-                          rel="noopener noreferrer"
-                          onClick={() => setMobileMenuOpen(false)}
+                        <button 
+                          className="btn-primary"
+                          onClick={() => {
+                            setMobileMenuOpen(false);
+                            handleGetStarted();
+                          }}
                         >
                           Get Started
-                        </a>
+                        </button>
                       </>
                     )}
                   </div>
@@ -6593,10 +6606,10 @@ function App() {
               </div>
               <div style={{marginTop: 'auto', display: 'flex', gap: '8px'}}>
                 {(customerData?.subscription_status === 'cancelled' || customerData?.subscription_status === 'cancel_scheduled' || profileData?.subscription_status === 'cancelled' || profileData?.subscription_status === 'cancel_scheduled') ? (
-                  <a
-                    href="https://www.screentimejourney.com/products/screentimejourney"
+                  <button
+                    onClick={handleGetStarted}
                     className="btn-secondary"
-                    style={{flex: 1, textAlign: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
+                    style={{flex: 1, textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center'}}
                   >
                     Start new subscription
                   </a>
@@ -7237,13 +7250,13 @@ function App() {
             </div>
 
             <div className="modal__footer">
-              <a
-                href="https://www.screentimejourney.com/products/screentimejourney"
+              <button
+                onClick={handleGetStarted}
                 className="btn-primary"
-                style={{width: '100%', textAlign: 'center', textDecoration: 'none', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px'}}
-              >
-                Subscribe Now
-              </a>
+                style={{width: '100%', textAlign: 'center', display: 'flex', alignItems: 'center', justifyContent: 'center', minHeight: '48px'}}
+                  >
+                    Subscribe Now
+                  </button>
               
               <a
                 href="https://www.screentimejourney.com"
