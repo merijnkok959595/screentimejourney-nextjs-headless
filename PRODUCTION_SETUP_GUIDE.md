@@ -143,3 +143,4 @@ def create_subscription_handler(event, context):
 - [Subscriptions](https://stripe.com/docs/billing/subscriptions/build-subscriptions)
 
 **Your frontend is ready!** 🎉 Once you add these environment variables, authentication and payments will work seamlessly.
+

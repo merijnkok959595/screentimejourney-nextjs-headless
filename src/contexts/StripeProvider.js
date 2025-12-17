@@ -47,3 +47,4 @@ const StripeProvider = ({ children }) => {
 };
 
 export default StripeProvider;
+

@@ -36,3 +36,4 @@ REACT_APP_ENVIRONMENT=development
 In your Vercel dashboard:
 1. Go to Settings → Environment Variables
 2. Add each variable with appropriate values for Production/Preview/Development
+

@@ -94,3 +94,4 @@ vercel-dashboard/
 ```
 
 Your Screen Time Dashboard is now ready for git-based deployments! 🚀
+

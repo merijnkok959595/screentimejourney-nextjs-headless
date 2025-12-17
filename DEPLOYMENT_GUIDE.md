@@ -100,3 +100,4 @@ Once deployed:
 4. Set up automatic deployments from your Git repository
 
 🎉 Your Screen Time Dashboard will be live and ready to use!
+

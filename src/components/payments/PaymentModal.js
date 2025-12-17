@@ -214,3 +214,4 @@ const PaymentModal = ({ isOpen, onClose, subscriptionType = 'premium' }) => {
 };
 
 export default PaymentModal;
+

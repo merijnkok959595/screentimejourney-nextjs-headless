@@ -481,3 +481,4 @@ const AuthModal = ({ isOpen, onClose, initialMode = 'signin', onAuthSuccess }) =
 };
 
 export default AuthModal;
+

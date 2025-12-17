@@ -38,3 +38,4 @@ const awsConfig = {
 Amplify.configure(awsConfig);
 
 export default awsConfig;
+

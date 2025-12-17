@@ -30,4 +30,4 @@ npm run build
 
 ## Original Source
 This app was migrated from AWS Amplify to Vercel for better performance and easier deployment management.
-# Force deployment Tue Dec 16 22:48:25 WET 2025
+
